@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzqsy.recognition.dao.UserMapper">
+
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into user(createTime, description, userName
+      )values
+      <foreach collection="users" item="user" index="index" separator=",">
+        (
+        #{user.createTime,jdbcType=TIMESTAMP},
+        #{user.description,jdbcType=VARCHAR},
+        #{user.userName,jdbcType=VARCHAR}
+        )
+      </foreach>
+  </insert>
+
+
+</mapper>
